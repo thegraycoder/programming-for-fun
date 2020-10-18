@@ -4,7 +4,7 @@
 
 
 def three_sum(nums):
-    sums = []
+    sums = set()
     nums.sort()
     for i in range(len(nums) - 2):
         left = i + 1
@@ -12,8 +12,7 @@ def three_sum(nums):
 
         while left < right:
             if nums[i] + nums[left] + nums[right] == 0:
-                if [nums[i], nums[left], nums[right]] not in sums:
-                    sums.append([nums[i], nums[left], nums[right]])
+                sums.add((nums[i], nums[left], nums[right]))
                 left += 1
                 right -= 1
             elif nums[i] + nums[left] + nums[right] < 0:
@@ -22,7 +21,7 @@ def three_sum(nums):
             else:
                 # We need smaller numbers
                 right -= 1
-    return sums
+    return list(sums)
 
 
 # Test cases
